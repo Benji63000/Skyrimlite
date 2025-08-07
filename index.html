@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skyrim-Lite (Pi5 Demo, no external perlin)</title>
+    <style>
+      html, body { margin:0; height:100%; background:#0b0e11; color:#eee; font-family: system-ui, sans-serif; }
+      #ui {
+        position: fixed; top: 10px; left: 10px; z-index: 10;
+        background: rgba(0,0,0,0.5); padding: 10px 12px; border-radius: 10px; backdrop-filter: blur(4px);
+        user-select:none; max-width: 340px; font-size: 14px;
+      }
+      #log { white-space: pre-line; margin-top: 6px; font-size: 12px; color:#cce; }
+      #crosshair {
+        position: fixed; top:50%; left:50%; transform: translate(-50%, -50%);
+        width: 10px; height: 10px; border: 2px solid #fff; border-radius: 50%; opacity: 0.5; pointer-events:none;
+      }
+      #hint { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%);
+              background: rgba(0,0,0,.5); padding: 6px 10px; border-radius: 8px; font-size: 13px; }
+      a { color:#9cf; }
+      .btn { background:#1b2735; padding:6px 10px; border-radius:8px; border:1px solid #31465f; cursor:pointer; }
+      .row { display:flex; gap:8px; align-items:center; margin:6px 0; }
+      input[type=range] { width: 160px; }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <div><b>Skyrim-Lite • Raspberry Pi 5</b></div>
+      <div class="row">Res scale <input id="resScale" type="range" min="0.4" max="1.0" value="0.65" step="0.05"><span id="resVal">0.65</span></div>
+      <div class="row">Draw dist <input id="drawDist" type="range" min="100" max="600" value="300" step="50"><span id="distVal">300</span></div>
+      <div class="row"><button id="lock" class="btn">Click → capture mouse</button> <button id="reset" class="btn">Reset</button></div>
+      <div>Controls: WASD move • Space jump • Mouse look • Left click attack • E talk • Shift sprint</div>
+      <div id="log"></div>
+    </div>
+    <div id="crosshair"></div>
+    <div id="hint">Tip: if FPS is low, lower <b>Res scale</b> and <b>Draw dist</b>.</div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
