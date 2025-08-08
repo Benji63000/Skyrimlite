@@ -141,7 +141,7 @@ document.addEventListener('mousemove', (e)=>{
   if (!document.pointerLockElement) return;
   yaw   -= e.movementX * 0.003;
   pitch -= e.movementY * 0.002;          // ajout du pitch
-  pitch  = clamp(pitch, -1.1, 1.1);      // limite haut/bas
+  pitch  = clamp(pitch, -1.57, 1.57);      // limite haut/bas
 });
 window.addEventListener('mousedown', ()=>{ mouseDown=true; });
 window.addEventListener('mouseup', ()=>{ mouseDown=false; });
@@ -220,7 +220,7 @@ function update(dt){
 
   /* Orientation + caméra (yaw + pitch) */
   player.rotation.y = yaw;
-  const camOffset = new THREE.Vector3(0, 2.0 - pitch*0.5, 4.5 + Math.cos(pitch)*0.5);
+  const camOffset = new THREE.Vector3(0, 2.0 - pitch*4.0, 4.5 + Math.cos(pitch)*0.3);
   camOffset.applyAxisAngle(new THREE.Vector3(0,1,0), yaw);
   camTarget.position.copy(player.position).add(new THREE.Vector3(0,1.2,0));
   camera.position.copy(camTarget.position.clone().add(camOffset));
